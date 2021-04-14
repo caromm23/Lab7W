@@ -33,7 +33,8 @@ $(document).ready(function() {
     
   })
   
-  $("body").on("click", ".animal-item" , function(img){
+  //Para dar o quitar movimiento a los gifs
+  $("body").on("click", ".animal-item" , function(){
     var moving = $(this).attr('movement');
     if(moving == 'false'){
       //Cambiar imagen por la que si se mueve
@@ -47,6 +48,19 @@ $(document).ready(function() {
       $(this).children().attr('src', imagen);
       $(this).attr('movement', 'false');
     }
+  })
+  
+  //Si se oprime el boton 'submit'
+  $("#add-animal").on("click", function(e){
+    e.preventDefault();
+    var nuevoTema = $("#animal-input").val();
+    console.log(nuevoTema);
+    temas[i] = nuevoTema;
+    console.log(i);
+    console.log(temas[i]);
+    $("#animal-input").val("");
+    $("#animal-buttons").append(`<button class="animalButton" animalType="${temas[i]}">${temas[i]}</button>`);
+    i++;
   })
   
 });
